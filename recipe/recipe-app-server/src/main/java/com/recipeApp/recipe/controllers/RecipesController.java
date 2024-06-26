@@ -1,7 +1,9 @@
-package com.recipeApp.recipe.recipes;
+package com.recipeApp.recipe.controllers;
 
 
 
+import com.recipeApp.recipe.entities.Recipes;
+import com.recipeApp.recipe.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080/")
 @RequestMapping("/api/recipes")
 public class RecipesController {
 

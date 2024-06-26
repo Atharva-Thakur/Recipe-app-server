@@ -1,5 +1,7 @@
-package com.recipeApp.recipe.ingredients;
+package com.recipeApp.recipe.controllers;
 
+import com.recipeApp.recipe.entities.Ingredients;
+import com.recipeApp.recipe.services.IngredientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

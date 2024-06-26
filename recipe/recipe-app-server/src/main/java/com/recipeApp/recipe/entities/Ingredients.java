@@ -1,4 +1,4 @@
-package com.recipeApp.recipe.ingredients;
+package com.recipeApp.recipe.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
