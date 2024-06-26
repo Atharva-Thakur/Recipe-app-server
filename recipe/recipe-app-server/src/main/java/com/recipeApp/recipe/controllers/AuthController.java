@@ -5,6 +5,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.recipeApp.recipe.entities.ERole;
+import com.recipeApp.recipe.entities.Role;
+import com.recipeApp.recipe.entities.User;
+import com.recipeApp.recipe.payload.request.LoginRequest;
+import com.recipeApp.recipe.payload.request.SignupRequest;
+import com.recipeApp.recipe.payload.response.MessageResponse;
+import com.recipeApp.recipe.payload.response.UserInfoResponse;
+import com.recipeApp.recipe.repositories.UserRepository;
+import com.recipeApp.recipe.security.jwt.JwtUtils;
+import com.recipeApp.recipe.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +48,7 @@ public class AuthController {
   UserRepository userRepository;
 
   @Autowired
-  RoleRepository roleRepository;
+  com.recipeApp.recipe.repositories.RoleRepository roleRepository;
 
   @Autowired
   PasswordEncoder encoder;
@@ -84,7 +94,7 @@ public class AuthController {
     }
 
     // Create new user's account
-    User user = new User(signUpRequest.getUsername(), 
+    User user = new User(signUpRequest.getUsername(),
                          signUpRequest.getEmail(),
                          encoder.encode(signUpRequest.getPassword()));
 
