@@ -11,18 +11,18 @@ public class Ingredients {
 
 
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private String category;
     private String units;
 
     // Getters and setters
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

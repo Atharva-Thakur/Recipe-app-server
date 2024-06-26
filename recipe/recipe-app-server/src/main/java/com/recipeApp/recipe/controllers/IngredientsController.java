@@ -21,7 +21,7 @@ public class IngredientsController {
     }
 
     @GetMapping("/{id}")
-    public Ingredients getIngredientById(@PathVariable String id) {
+    public Ingredients getIngredientById(@PathVariable Integer id) {
         return ingredientService.getIngredientById(id);
     }
 
@@ -31,12 +31,12 @@ public class IngredientsController {
     }
 
     @PutMapping("/{id}")
-    public Ingredients updateIngredient(@PathVariable String id, @RequestBody Ingredients ingredient) {
+    public Ingredients updateIngredient(@PathVariable Integer id, @RequestBody Ingredients ingredient) {
         return ingredientService.updateIngredient(id, ingredient);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteIngredient(@PathVariable String id) {
+    public ResponseEntity<?> deleteIngredient(@PathVariable Integer id) {
         ingredientService.deleteIngredient(id);
         return ResponseEntity.ok().build();
     }

@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IngredientsRepository extends MongoRepository<Ingredients, String> {
+public interface IngredientsRepository extends MongoRepository<Ingredients, Integer> {
     Ingredients findByName(String name);
 }

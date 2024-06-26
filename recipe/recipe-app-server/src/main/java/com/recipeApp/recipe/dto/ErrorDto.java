@@ -1,2 +1,3 @@
-package com.recipeApp.recipe.dto;public class ErrorDto {
-}
+package com.recipeApp.recipe.dto;
+
+public record ErrorDto (String message) { }

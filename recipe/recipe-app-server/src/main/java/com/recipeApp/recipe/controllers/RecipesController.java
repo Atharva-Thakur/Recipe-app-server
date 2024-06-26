@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/recipes")
 public class RecipesController {
 
@@ -24,7 +24,7 @@ public class RecipesController {
     }
 
     @GetMapping("/{id}")
-    public Recipes getRecipeById(@PathVariable String id) {
+    public Recipes getRecipeById(@PathVariable Integer id) {
         return recipeService.getRecipeById(id);
     }
 
@@ -34,12 +34,12 @@ public class RecipesController {
     }
 
     @PutMapping("/{id}")
-    public Recipes updateRecipe(@PathVariable String id, @RequestBody Recipes recipe) {
+    public Recipes updateRecipe(@PathVariable Integer id, @RequestBody Recipes recipe) {
         return recipeService.updateRecipe(id, recipe);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteRecipe(@PathVariable String id) {
+    public ResponseEntity<?> deleteRecipe(@PathVariable Integer id) {
         recipeService.deleteRecipe(id);
         return ResponseEntity.ok().build();
     }

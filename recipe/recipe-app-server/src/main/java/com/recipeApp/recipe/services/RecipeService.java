@@ -17,7 +17,7 @@ public class RecipeService {
         return recipeRepository.findAll();
     }
 
-    public Recipes getRecipeById(String id) {
+    public Recipes getRecipeById(Integer id) {
         return recipeRepository.findById(id).orElse(null);
     }
 
@@ -25,12 +25,12 @@ public class RecipeService {
         return recipeRepository.save(recipe);
     }
 
-    public Recipes updateRecipe(String id, Recipes recipe) {
+    public Recipes updateRecipe(Integer id, Recipes recipe) {
         recipe.setId(id);
         return recipeRepository.save(recipe);
     }
 
-    public void deleteRecipe(String id) {
+    public void deleteRecipe(Integer id) {
         recipeRepository.deleteById(id);
     }
 }

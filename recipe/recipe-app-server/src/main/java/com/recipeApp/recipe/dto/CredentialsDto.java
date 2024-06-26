@@ -1,2 +1,5 @@
-package com.recipeApp.recipe.dto;public class CredentialsDto {
+package com.recipeApp.recipe.dto;
+
+public record CredentialsDto(String login, char[] password) {
+
 }

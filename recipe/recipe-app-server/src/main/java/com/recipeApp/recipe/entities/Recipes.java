@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.annotation.processing.Generated;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class Recipes {
 
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private String description;
     private List<String> instructions;
@@ -23,11 +24,11 @@ public class Recipes {
     // Getters and setters
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
