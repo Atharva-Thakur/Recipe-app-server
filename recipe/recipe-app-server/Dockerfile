@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/recipe-server.jar app.jar
 
 # Expose the port that your Spring Boot application uses (usually 8080)
-EXPOSE 8080
+EXPOSE 8081
 
 # Set environment variables if needed (e.g., for connecting to MongoDB)
 # ENV MONGODB_URI mongodb://mongodb-container:27017/your-database-name
