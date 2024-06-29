@@ -10,10 +10,8 @@ services:
       - mongodb-data:/data/db
 
   spring-app:
-    build:
-      context: .  # use the Dockerfile in the current directory
-      dockerfile: Dockerfile
-    container_name: spring-app-container
+    image: atharvarthakur/recipe-server:latest
+    container_name: spring-container
     ports:
       - "8081:8081"
     depends_on:
