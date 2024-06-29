@@ -1,0 +1,78 @@
+pipeline {
+    agent any
+
+    environment {
+        REPO_URL = 'https://github.com/Atharva-Thakur/Recipe-app-server.git'
+        REPO_BRANCH = 'main'  // or whichever branch you want to build
+        IMAGE_NAME = 'atharvarthakur/recipe-server'
+        IMAGE_TAG = 'latest'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: "${REPO_BRANCH}", url: "${REPO_URL}"
+            }
+        }
+
+        stage('Build JAR file') {
+            steps {
+                dir('recipe/recipe-app-server'){
+                sh 'ls -la'  // Optional: to verify files in the directory
+                sh 'mvn clean package'
+                }
+            }
+        }
+
+        stage('Docker login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('recipe/recipe-app-server'){
+                        sh 'ls -la'  // Optional: to verify files in the directory
+                        sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    }
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                }
+            }
+        }
+        stage('Stop previous containers') {
+            steps {
+                sh 'docker stop spring-container || true'
+                sh 'docker rm spring-container || true'
+                sh 'docker stop mongodb-container || true'
+                sh 'docker rm mongodb-container || true'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                dir('recipe/recipe-app-server'){
+                        sh 'ls -la'  // Optional: to verify files in the directory
+                        sh "docker-compose up -d"
+                    }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
