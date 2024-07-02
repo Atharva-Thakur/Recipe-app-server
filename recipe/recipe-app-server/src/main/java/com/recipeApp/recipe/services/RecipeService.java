@@ -1,8 +1,7 @@
 package com.recipeApp.recipe.services;
 
-import com.recipeApp.recipe.entities.Recipes;
+import com.recipeApp.recipe.models.Recipes;
 import com.recipeApp.recipe.repositories.RecipesRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
