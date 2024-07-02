@@ -1,5 +1,6 @@
 package com.recipeApp.recipe.entities;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,8 +12,10 @@ import java.util.List;
 @Document(collection = "recipes")
 public class Recipes {
 
+
+
     @Id
-    private Integer id;
+    private String id;
     private String title;
     private String description;
     private List<String> instructions;
@@ -24,11 +27,11 @@ public class Recipes {
     // Getters and setters
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id){
         this.id = id;
     }
 

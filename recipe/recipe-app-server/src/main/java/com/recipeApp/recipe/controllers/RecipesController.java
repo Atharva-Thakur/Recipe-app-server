@@ -1,9 +1,8 @@
 package com.recipeApp.recipe.controllers;
 
-
-
 import com.recipeApp.recipe.entities.Recipes;
 import com.recipeApp.recipe.services.RecipeService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +23,13 @@ public class RecipesController {
     }
 
     @GetMapping("/{id}")
-    public Recipes getRecipeById(@PathVariable Integer id) {
+    public Recipes getRecipeById(@PathVariable String id) {
         return recipeService.getRecipeById(id);
+    }
+
+    @GetMapping("/title/{title}")
+    public Recipes getRecipeByTitle(@PathVariable String title) {
+        return recipeService.getRecipeByTitle(title);
     }
 
     @PostMapping
@@ -34,14 +38,13 @@ public class RecipesController {
     }
 
     @PutMapping("/{id}")
-    public Recipes updateRecipe(@PathVariable Integer id, @RequestBody Recipes recipe) {
+    public Recipes updateRecipe(@PathVariable String id, @RequestBody Recipes recipe) {
         return recipeService.updateRecipe(id, recipe);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteRecipe(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteRecipe(@PathVariable String id) {
         recipeService.deleteRecipe(id);
         return ResponseEntity.ok().build();
     }
 }
-
