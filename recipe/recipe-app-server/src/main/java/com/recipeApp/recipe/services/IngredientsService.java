@@ -1,6 +1,6 @@
 package com.recipeApp.recipe.services;
 
-import com.recipeApp.recipe.entities.Ingredients;
+import com.recipeApp.recipe.models.Ingredients;
 import com.recipeApp.recipe.repositories.IngredientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

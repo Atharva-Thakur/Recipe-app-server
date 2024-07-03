@@ -1,9 +1,7 @@
-package com.recipeApp.recipe.entities;
+package com.recipeApp.recipe.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
 
 @Document(collection = "ingredients")
 public class Ingredients {

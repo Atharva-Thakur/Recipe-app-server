@@ -1,8 +1,7 @@
 package com.recipeApp.recipe.controllers;
 
-import com.recipeApp.recipe.entities.Recipes;
+import com.recipeApp.recipe.models.Recipes;
 import com.recipeApp.recipe.services.RecipeService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

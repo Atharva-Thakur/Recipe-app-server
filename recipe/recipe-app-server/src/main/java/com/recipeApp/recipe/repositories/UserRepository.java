@@ -1,13 +1,17 @@
 package com.recipeApp.recipe.repositories;
 
-import com.recipeApp.recipe.entities.User;
+import com.recipeApp.recipe.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, Integer> {
-    Optional<User> findByLogin(String login);
+public interface UserRepository extends MongoRepository<User, String> {
+    Optional<User> findByUsername(String username);
 
+    Boolean existsByUsername(String username);
+
+    Boolean existsByEmail(String email);
 }
