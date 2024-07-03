@@ -15,6 +15,8 @@ import com.recipeApp.recipe.repositories.RoleRepository;
 import com.recipeApp.recipe.repositories.UserRepository;
 import com.recipeApp.recipe.security.jwt.JwtUtils;
 import com.recipeApp.recipe.security.services.UserDetailsImpl;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +28,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -122,5 +120,25 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<?> signOut(HttpServletRequest request, HttpServletResponse response,
+                                     @CookieValue(name = "recipe-cookie", required = false) String jwtToken) {
+
+        // Clear JWT token from cookies
+        if (jwtToken != null) {
+            ResponseCookie cookie = ResponseCookie.from("recipe-cookie", "")
+                    .httpOnly(true)
+                    .maxAge(0)
+                    .path("/")
+                    .build();
+            response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        }
+
+        // Clear authentication in SecurityContextHolder
+        SecurityContextHolder.clearContext();
+
+        return ResponseEntity.ok(new MessageResponse("User signed out successfully!"));
     }
 }
