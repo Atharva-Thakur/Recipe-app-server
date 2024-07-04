@@ -84,7 +84,6 @@ public class Recipes {
     public static class Ingredient {
         @DBRef
         private Ingredients ingredient;
-        private String name;
         private String quantity;
 
         // Getters and setters
@@ -97,14 +96,6 @@ public class Recipes {
             this.ingredient = ingredient;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
         public String getQuantity() {
             return quantity;
         }
@@ -112,6 +103,7 @@ public class Recipes {
         public void setQuantity(String quantity) {
             this.quantity = quantity;
         }
+
     }
 
     public static class Nutrition {
