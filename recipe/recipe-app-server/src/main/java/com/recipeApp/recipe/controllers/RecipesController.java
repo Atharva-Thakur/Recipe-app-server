@@ -23,7 +23,7 @@ public class RecipesController {
         return recipeService.getAllRecipes();
     }
 
-
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/{id}")
     public Recipes getRecipeById(@PathVariable String id) {
         return recipeService.getRecipeById(id);
@@ -34,6 +34,7 @@ public class RecipesController {
         return recipeService.getRecipeByTitle(title);
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping
     public Recipes createRecipe(@RequestBody Recipes recipe) {
         return recipeService.createRecipe(recipe);

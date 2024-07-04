@@ -17,7 +17,7 @@ public class IngredientsService {
         return ingredientRepository.findAll();
     }
 
-    public Ingredients getIngredientById(Integer id) {
+    public Ingredients getIngredientById(String id) {
         return ingredientRepository.findById(id).orElse(null);
     }
 
@@ -25,12 +25,12 @@ public class IngredientsService {
         return ingredientRepository.save(ingredient);
     }
 
-    public Ingredients updateIngredient(Integer id, Ingredients ingredient) {
+    public Ingredients updateIngredient(String id, Ingredients ingredient) {
         ingredient.setId(id);
         return ingredientRepository.save(ingredient);
     }
 
-    public void deleteIngredient(Integer id) {
+    public void deleteIngredient(String id) {
         ingredientRepository.deleteById(id);
     }
 }
