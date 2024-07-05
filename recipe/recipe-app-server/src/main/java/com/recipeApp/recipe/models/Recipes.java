@@ -83,16 +83,16 @@ public class Recipes {
 
     public static class Ingredient {
         @DBRef
-        private Ingredients ingredient;
+        private com.recipeApp.recipe.models.Ingredient ingredient;
         private String quantity;
 
         // Getters and setters
 
-        public Ingredients getIngredient() {
+        public com.recipeApp.recipe.models.Ingredient getIngredient() {
             return ingredient;
         }
 
-        public void setIngredient(Ingredients ingredient) {
+        public void setIngredient(com.recipeApp.recipe.models.Ingredient ingredient) {
             this.ingredient = ingredient;
         }
 

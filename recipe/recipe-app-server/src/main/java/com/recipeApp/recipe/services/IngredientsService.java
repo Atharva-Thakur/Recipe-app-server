@@ -1,6 +1,6 @@
 package com.recipeApp.recipe.services;
 
-import com.recipeApp.recipe.models.Ingredients;
+import com.recipeApp.recipe.models.Ingredient;
 import com.recipeApp.recipe.repositories.IngredientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,19 +13,19 @@ public class IngredientsService {
     @Autowired
     private IngredientsRepository ingredientRepository;
 
-    public List<Ingredients> getAllIngredients() {
+    public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
     }
 
-    public Ingredients getIngredientById(String id) {
+    public Ingredient getIngredientById(String id) {
         return ingredientRepository.findById(id).orElse(null);
     }
 
-    public Ingredients createIngredient(Ingredients ingredient) {
+    public Ingredient createIngredient(Ingredient ingredient) {
         return ingredientRepository.save(ingredient);
     }
 
-    public Ingredients updateIngredient(String id, Ingredients ingredient) {
+    public Ingredient updateIngredient(String id, Ingredient ingredient) {
         ingredient.setId(id);
         return ingredientRepository.save(ingredient);
     }
