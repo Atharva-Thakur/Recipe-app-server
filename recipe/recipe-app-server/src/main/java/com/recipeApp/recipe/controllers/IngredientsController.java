@@ -1,6 +1,6 @@
 package com.recipeApp.recipe.controllers;
 
-import com.recipeApp.recipe.models.Ingredients;
+import com.recipeApp.recipe.models.Ingredient;
 import com.recipeApp.recipe.services.IngredientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +17,22 @@ public class IngredientsController {
     private IngredientsService ingredientService;
 
     @GetMapping
-    public List<Ingredients> getAllIngredients() {
+    public List<Ingredient> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
 
     @GetMapping("/{id}")
-    public Ingredients getIngredientById(@PathVariable String id) {
+    public Ingredient getIngredientById(@PathVariable String id) {
         return ingredientService.getIngredientById(id);
     }
 
     @PostMapping
-    public Ingredients createIngredient(@RequestBody Ingredients ingredient) {
+    public Ingredient createIngredient(@RequestBody Ingredient ingredient) {
         return ingredientService.createIngredient(ingredient);
     }
 
     @PutMapping("/{id}")
-    public Ingredients updateIngredient(@PathVariable String id, @RequestBody Ingredients ingredient) {
+    public Ingredient updateIngredient(@PathVariable String id, @RequestBody Ingredient ingredient) {
         return ingredientService.updateIngredient(id, ingredient);
     }
 

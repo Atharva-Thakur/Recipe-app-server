@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "ingredients")
-public class Ingredients {
+public class Ingredient {
 
 
 
@@ -48,7 +48,7 @@ public class Ingredients {
         this.units = units;
     }
 
-    public Ingredients(String id) {
+    public Ingredient(String id) {
         this.id = id;
     }
 
